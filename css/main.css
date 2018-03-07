@@ -1,0 +1,351 @@
+/*STARTER CSS*/
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+header,
+nav,
+footer,
+section,
+article, div {
+  box-sizing: border-box;
+}
+
+img,
+embed,
+object,
+video {
+    max-width: 100%;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+nav a,
+button {
+    min-width: 48px;
+    min-height: 48px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0; 
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/*START OF THE SPECIFIC CSS*/
+/*css Udacity theme custom properties*/
+:root {
+    --udacity-blue: #02b3e4;
+    --dark-grey: #2d3c49;
+    --light-grey: #7d97ad;
+    --transp-black: rgba(0, 0, 0, 0.63);
+}
+
+body {
+    background: #fff;
+    color: var(--dark-grey);
+    letter-spacing: 0.1em;
+    font-family: 'Source Sans Pro', sans-serif; 
+}
+
+#container {
+    height: 100%;
+    width: 80vw;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+header {
+    width: 100%;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 0;
+    border-bottom: 3px solid transparent;
+    border-image: linear-gradient(45deg , yellow, limegreen );
+    border-image-slice: 1;
+}
+
+.logo-header {
+    width: 60px;
+}
+
+.nav-name {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-transform: uppercase;
+}
+
+h1,
+h2,
+h3 {
+    font-weight: 300;
+}
+
+h2 {
+    color: var(--light-grey)
+}
+
+main {
+    width: 100%;
+}
+
+.hero-image {
+    margin: 5vh 0;
+    width: 100%;
+    height: 60vh;
+    min-height: 200px;
+    max-height: calc(100vh - ( 187px + 300px + (2 * 5vh)) );
+    background: url("https://picsum.photos/4133/2745?image=668");
+    background-position: bottom left;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: grayscale(1);
+}
+
+.bar-display-works {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    flex-wrap: wrap;
+    align-items: top;
+}
+
+.works article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    flex: 1;
+}
+
+.bar-display-works>*:first-child {
+    margin-left: 0;
+}
+
+.bar-display-works>*:last-child {
+    margin-right: 0;
+}
+
+.works article>a {
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+/* image overlay effect - icon buttons AND content -----------------------------------  */
+.hover-btn-text {
+    position: relative;
+}
+
+.hover-btn-text img {
+    position: relative;
+    top: 0;
+    width: 100%;
+    left: 0;
+    filter: grayscale(0);
+    transition: all .1s ease-in-out;
+}
+
+.hover-btn-text .overlay {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+    height: 97%;
+    left: 0;
+    top: 0;
+    width: 100%;
+    opacity: 0;
+    transition: all 0.3s;
+}
+
+.hover-btn-text .buttons {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.hover-btn-text .content {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    transform: translate(0%, 0%);
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-items: center;
+}
+
+.hover-btn-text .buttons a {
+    transform: scale(0);
+    opacity: 0;
+    background: #fff;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    display: inline-block;
+    line-height: 40px;
+    font-size: 0.9rem;
+    text-align: center;
+    text-decoration: none;
+    width: 40px;
+    height: 40px;
+    margin: 0 1px;
+    color: rgba(50, 50, 50, 0.9);
+    transition: all 0.3s cubic-bezier(0, 1.135, 0.73, 1.405);
+}
+
+.hover-btn-text p {
+	color: #fff;
+	font-size: 0.8rem;
+    font-weight: 900;
+    transform: scale(0);
+    opacity: 0;
+    display: inline-block;
+    width: 70%;
+    transition: all 0.3s cubic-bezier(0, 1.135, 0.73, 1.405);
+    transition-delay: 0.1s;
+    text-align: center;
+}
+
+/* creates a delay effect in case there is several object to display, to 'pop' more */
+.hover-btn-text .buttons a:nth-child(2) {
+    transition-delay: 0.1s;
+}
+
+/* calls the content to display (by opacity) when :hover the image */
+.hover-btn-text:hover .buttons a {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.hover-btn-text:hover .content p {
+	/* transform scale set the scale (size) of the element getting displayed */
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* calls the overlay to get opacity when :hover the image */
+.hover-btn-text:hover .overlay {
+    opacity: 1;
+}
+
+.hover-btn-text:hover img {
+    filter: grayscale(1);
+}
+
+footer {
+    border-top: 3px solid transparent;
+    border-image: linear-gradient(45deg , yellow, limegreen );
+    border-image-slice: 1;
+    margin: 50px auto 2%;
+    height: 100px;
+    width: 80vw;
+    max-width: 1000px;
+}
+
+footer > .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 1000px;
+    height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+footer .logo a {
+    opacity: 0.7;
+}
+
+footer img {
+    width: 1.5rem;
+    opacity: 0.6;
+}
+
+@media screen and (min-width: 651px) and (max-width: 900px) {
+    .hover-btn-text .buttons {
+        top: 20%;
+    }
+    
+    .hover-btn-text .content {
+        top: 30%;
+    }
+    
+    .hover-btn-text .buttons a {
+        line-height: 30px;
+        font-size: 0.7rem;
+        width: 30px;
+        height: 30px;
+    }
+    
+    .hover-btn-text p {
+        font-size: 0.7rem;
+        width: 80%;
+    }
+    
+}
+
+@media screen and (max-width: 650px) {
+    .works {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .works h2 {
+        font-weight: bold;
+    }
+    
+    .bar-display-works {
+        flex-direction: column;
+    }
+    
+}
+
+@media screen and (max-width: 450px) {
+    #container {
+        width: 90vw;
+    }
+    h1 {
+        font-size: 1.4rem;
+        text-align: right;
+    }
+    
+    h3 {
+        font-size: 1rem;
+    }
+    
+}
+
+/*TODO: use real images and process them with grunt, the usual way.*/
+
+/*TODO: put it all in Github and share it with mentor*/
